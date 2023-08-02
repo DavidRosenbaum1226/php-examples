@@ -7,19 +7,25 @@ class ArrayUtils
     {
     }
 
-    public static function mergeArrays(array $array1, array $array2): array
+    public static function mergeArrays(array ...$arrays): array
     {
         // Could just be done like this
         // return array_merge($array1, $array2);
 
-        // Implement without PHP built in array code
-        $mergedArray = [];
-        foreach ($array1 as $key => $value) {
-            $mergedArray[$key] = $value;
+        $result = array();
+
+        foreach ($arrays as $array) {
+            foreach ($array as $key => $value) {
+                if (is_int($key)) {
+                    // Numeric index, use array_push to add the value to the result
+                    array_push($result, $value);
+                } else {
+                    // Associative key, use the key to add the value to the result
+                    $result[$key] = $value;
+                }
+            }
         }
-        foreach ($array2 as $key => $value) {
-            $mergedArray[$key] = $value;
-        }
-        return $mergedArray;
+
+        return $result;
     }
 }
