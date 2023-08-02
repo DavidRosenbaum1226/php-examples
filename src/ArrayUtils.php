@@ -7,7 +7,7 @@ class ArrayUtils
     {
     }
 
-    public static function mergeArrays(array ...$arrays): array
+    public static function merge(array ...$arrays): array
     {
         // Could just be done like this    
         // return array_merge(...$arrays);
