@@ -9,11 +9,10 @@ class ArrayUtils
 
     public static function mergeArrays(array ...$arrays): array
     {
-        // Could just be done like this
-        // return array_merge($array1, $array2);
+        // Could just be done like this    
+        // return array_merge(...$arrays);
 
         $result = array();
-
         foreach ($arrays as $array) {
             foreach ($array as $key => $value) {
                 if (is_int($key)) {
@@ -25,7 +24,6 @@ class ArrayUtils
                 }
             }
         }
-
         return $result;
     }
 }
