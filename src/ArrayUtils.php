@@ -44,7 +44,6 @@ class ArrayUtils
                 }
             }
         }
-
         return $result;
     }
 }
