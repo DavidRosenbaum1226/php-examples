@@ -2,7 +2,6 @@
 
 class ArrayUtils
 {
-
     private function __construct()
     {
     }
