@@ -27,7 +27,24 @@ class ArrayUtils
         return $result;
     }
 
-    public static function deduplicate(array $arr): array {
-        return array_unique($arr);
+    public static function deduplicate(array $array): array
+    {
+        // Could just be done like this    
+        // return array_unique($arr);
+
+        $result = array();
+        foreach ($array as $key => $value) {
+            if (!in_array($value, $result, true)) {
+                if (is_int($key)) {
+                    // Numeric index, use array_push to add the value to the result
+                    $result[$key] = $value;
+                } else {
+                    // Associative key, use the key to add the value to the result
+                    $result[$key] = $value;
+                }
+            }
+        }
+
+        return $result;
     }
 }
