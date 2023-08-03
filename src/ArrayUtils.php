@@ -26,4 +26,8 @@ class ArrayUtils
         }
         return $result;
     }
+
+    public static function deduplicate(array $arr): array {
+        return array_unique($arr);
+    }
 }

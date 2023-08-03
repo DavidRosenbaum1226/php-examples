@@ -29,4 +29,25 @@ class ArrayUtilsTest extends TestCase
         $expectedResult = ['a' => 'apple', 'b' => 'banana', 0 => 'cherry', 1 => 'date', 2 => 'cherry', 3 => 'date'];
         $this->assertEquals($expectedResult, ArrayUtils::merge($array1, $array2));
     }
+
+    public function testDeduplicateForAssociativeArray()
+    {
+        $array = ['a' => 'apple', 'b' => 'banana', 'c' => 'cherry', 'd' => 'date'];
+        $expectedResult = ['a' => 'apple', 'b' => 'banana', 'c' => 'cherry', 'd' => 'date'];
+        $this->assertEquals($expectedResult, ArrayUtils::deduplicate($array));
+    }
+
+    public function testDeduplicateForNumericArray()
+    {
+        $array = ['apple', 'banana', 'cherry', 'date'];
+        $expectedResult = ['apple', 'banana', 'cherry', 'date'];
+        $this->assertEquals($expectedResult, ArrayUtils::deduplicate($array));
+    }
+
+    public function testDeduplicateForMixedArray()
+    {
+        $array = ['a' => 'apple', 'b' => 'banana', 'c' => 'cherry', 'd' => 'date', 'apple', 'banana', 'cherry', 'date'];
+        $expectedResult = ['a' => 'apple', 'b' => 'banana', 'c' => 'cherry', 'd' => 'date'];
+        $this->assertEquals($expectedResult, ArrayUtils::deduplicate($array));
+    }
 }
